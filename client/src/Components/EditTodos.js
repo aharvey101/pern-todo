@@ -7,15 +7,18 @@ const EditTodo = ({ todo }) => {
 
   const updateDesc = async (e) => {
     e.preventDefault()
+    console.log(desc)
     try {
-      const body = desc
+      const body = {
+        description: desc,
+      }
       console.log(body)
       const response = await fetch(
         `http://localhost:5000/todos/${todo.todo_id}`,
         {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: body,
+          body: JSON.stringify(body),
         }
       )
       console.log(response)
@@ -40,7 +43,7 @@ const EditTodo = ({ todo }) => {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h4 className="modal-title">Modal Heading</h4>
+              <h4 className="modal-title">Edit Todo</h4>
               <button type="button" className="close" data-dismiss="modal">
                 &times;
               </button>

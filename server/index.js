@@ -51,6 +51,7 @@ app.get('/todos/:id', async (req, res) => {
 
 app.put('/todos/:id', async (req, res) => {
   try {
+    console.log(req.body)
     const { id } = req.params
     const { description } = req.body
     const updateTodo = await pool.query(
